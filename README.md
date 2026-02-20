@@ -1,64 +1,61 @@
-Paye Tonkawa - Solution B2B
+☕ Paye Tonkawa - Solution B2B (MSPR TPRE814)
 📌 Présentation du Projet
-Dans le cadre de la MSPR TPRE814 à l'EPSI, ce projet vise à moderniser le système d'information de l'entreprise fictive Paye Tonkawa, spécialisée dans la vente de café. L'objectif est de permettre une transition efficace vers la vente B2B pour les professionnels de la restauration grâce à une architecture logicielle moderne, modulaire et scalable.
-+2
+
+Paye Tonkawa est une entreprise spécialisée dans la vente de café. Ce projet, réalisé dans le cadre de la MSPR TPRE814 à l'EPSI, 
+vise à moderniser le système d'information existant pour répondre aux nouveaux besoins B2B (vente aux professionnels de la restauration).
+
+L'objectif principal est de migrer d'une architecture monolithique limitée vers une architecture en micro-services agile, scalable et sécurisée.
 
 🚀 Objectifs de la Mission
 
-Modernisation : Migration d'un système existant vers une architecture en micro-services.
-
-
-Développement API : Création de trois services indépendants (Clients, Produits, Commandes) exposant des APIs REST sécurisées.
-+2
-
-
-Interface Web : Développement d'une application React pour consommer les APIs et faciliter les tests.
-+1
-
-
-Automatisation : Mise en place d'une pipeline CI/CD complète avec GitHub Actions.
-+1
+Modernisation : Passage d'un ERP/CRM vieillissant vers une architecture distribuée.
+Scalabilité : Découpage du métier en micro-services indépendants (Clients, Produits, Commandes).
+Fiabilité : Mise en place d'une communication robuste entre services via un Message Broker.
+Automatisation : Intégration et déploiement continus (CI/CD).
 
 🛠 Stack Technique
-
 Backend : Node.js avec le framework Express.js.
 
+Frontend : React.js pour l'interface de gestion.
 
-Frontend : React.js (intégré via Axios/fetch).
-+1
+Base de données : PostgreSQL (une instance par micro-service pour garantir l'indépendance).
 
+Communication Inter-services : RabbitMQ (Message Broker).
 
-Base de données : PostgreSQL (avec séparation des bases par service).
-+1
+Tests : Jest pour les tests unitaires et d'intégration.
 
+Conteneurisation : Docker & Docker Compose.
 
-Communication : Message Broker RabbitMQ pour la synchronisation des données.
+🏗 Architecture du Système
+La solution est décomposée en trois services principaux :
 
+Service Clients : Gestion du référentiel des établissements (SIRET, contacts, adresses).
 
-Conteneurisation : Docker pour le déploiement des services.
+Service Produits : Gestion du catalogue de café et mise à jour des stocks en temps réel.
 
+Service Commandes : Tunnel d'achat, historique et suivi des statuts d'expédition.
 
-Tests & Qualité : Jest pour les tests unitaires et d'intégration, suivi de la qualité via Linting et normes OWASP.
-+1
+🔧 Installation et Lancement (Développement)
+Cloner le dépôt :
 
-🏗 Architecture des Micro-services
-La solution est découpée en trois micro-services autonomes:
-+1
+Bash
+git clone https://github.com/votre-repo/paye-ton-kawa.git
+cd paye-ton-kawa
+Lancer les services avec Docker :
 
+Bash
+docker-compose up --build
+Accéder aux interfaces :
 
-API Clients : Gestion du référentiel client.
+Frontend : http://localhost:3000
 
+API Gateway / Services : http://localhost:8080 (selon configuration)
 
-API Produits : Gestion du catalogue de café et des stocks.
+📈 Pipeline CI/CD
+Le projet intègre des GitHub Actions pour assurer la qualité du code à chaque commit :
 
+Vérification du Linting.
 
-API Commandes : Tunnel de commande et suivi du statut d'envoi.
+Exécution des tests automatisés (Jest).
 
-⚙️ CI/CD et Déploiement
-Le projet utilise GitHub Actions pour automatiser le cycle de vie du logiciel:
-
-
-Pipelines : Build, tests automatisés et déploiement continu.
-
-
-Workflow : Utilisation de la méthodologie GitFlow pour la gestion des branches.
+Build des images Docker.
