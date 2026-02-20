@@ -39,7 +39,7 @@ Service Commandes : Tunnel d'achat, historique et suivi des statuts d'expéditio
 Cloner le dépôt :
 
 Bash
-git clone https://github.com/votre-repo/paye-ton-kawa.git
+git clone (url du repo)
 cd paye-ton-kawa
 Lancer les services avec Docker :
 
@@ -59,3 +59,4 @@ Vérification du Linting.
 Exécution des tests automatisés (Jest).
 
 Build des images Docker.
+
